@@ -42,19 +42,18 @@ public class UserService {
 	public List<UserEntity> deleteUser(String name) {
 		System.out.println("Deletion of " + name);
 		List<UserEntity> userList = repository.findAll();
-		/*
-		 * UserEntity
-		 * userEntity=userList.stream().filter(a->name.equalsIgnoreCase(a.getName())).
-		 * findAny().orElse(null);
-		 * 
-		 * repository.delete(userEntity);
-		 */
+		
+		  UserEntity  userEntity=userList.stream().filter(a->name.equalsIgnoreCase(a.getName())).
+		  findAny().orElse(null);
+		  
+		  repository.delete(userEntity);
+		 
 
-		for (int i = 0; i < userList.size(); i++) {
-			if (userList.get(i).getName().equalsIgnoreCase(name)) {
-				repository.delete(userList.get(i));
-			}
-		}
+		//for (int i = 0; i < userList.size(); i++) {
+			//if (userList.get(i).getName().equalsIgnoreCase(name)) {
+			//	repository.delete(userList.get(i));
+			//}
+		//}
 
 		return userList;
 	}
